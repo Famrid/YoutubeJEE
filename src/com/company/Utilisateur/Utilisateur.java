@@ -1,7 +1,7 @@
-package Utilisateur;
+package com.company.Utilisateur;
 
-import Like.Like;
-import Video.Video;
+import com.company.Like.Like;
+import com.company.Video.Video;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,6 +18,22 @@ public class Utilisateur {
         this.dateNaissance = dateNaissance;
         this.arrayLike = new ArrayList<Like>();
         this.arrayVideo = new ArrayList<Video>();
+    }
+
+    public Collection<Like> getArrayLike() {
+        return arrayLike;
+    }
+
+    public void setArrayLike(Collection<Like> arrayLike) {
+        this.arrayLike = arrayLike;
+    }
+
+    public Collection<Video> getArrayVideo() {
+        return arrayVideo;
+    }
+
+    public void setArrayVideo(Collection<Video> arrayVideo) {
+        this.arrayVideo = arrayVideo;
     }
 
     public String getPseudo() {
