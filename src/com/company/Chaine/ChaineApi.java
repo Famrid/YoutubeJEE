@@ -40,14 +40,12 @@ public class ChaineApi {
         if(Objects.isNull(mapVideo.get(chaine.getNom()))) {
             ArrayList<Video> newArray = new ArrayList<Video>();
             newArray.add(video);
-            video.setChaine(chaine);
-            video.getCategorie().addVideo(video);
+            ajouterVideoChaine(chaine, video);
             mapVideo.put(chaine.getNom(), newArray);
         } else {
             ArrayList<Video> array = mapVideo.get(chaine.getNom());
             array.add(video);
-            video.setChaine(chaine);
-            video.getCategorie().addVideo(video);
+            ajouterVideoChaine(chaine, video);
             mapVideo.put(chaine.getNom(), array);
         }
     }
@@ -65,5 +63,13 @@ public class ChaineApi {
 
     public static void subscribe(Utilisateur utilisateur, Chaine chaine) {
         utilisateur.getChaineAbonee().add(chaine);
+    }
+
+    public static void ajouterVideoChaine(Chaine chaine, Video video) {
+        List<Video> listeVideo = new ArrayList<>(chaine.getListe());
+        listeVideo.add(video);
+        chaine.setListe(listeVideo);
+        video.setChaine(chaine);
+        video.getCategorie().addVideo(video);
     }
 }
