@@ -1,38 +1,66 @@
 package com.company.Utilisateur;
 
+import com.company.Chaine.Chaine;
 import com.company.Like.Like;
 import com.company.Video.Video;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 public class Utilisateur {
     private String pseudo;
+    private String password;
     private Date dateNaissance;
-    private Collection<Like> arrayLike;
-    private Collection<Video> arrayVideo;
+    private Chaine chainePossedee;
+    private List<Chaine> chaineAbonee;
+    private List<Like> arrayLike;
+    private List<Video> arrayVideo;
 
-    public Utilisateur(String pseudo, Date dateNaissance) {
+
+    public Utilisateur(String pseudo, Date dateNaissance, String password) {
         this.pseudo = pseudo;
         this.dateNaissance = dateNaissance;
         this.arrayLike = new ArrayList<Like>();
         this.arrayVideo = new ArrayList<Video>();
+        this.password = password;
+        this.chaineAbonee = new ArrayList<>();
     }
 
-    public Collection<Like> getArrayLike() {
+    public Chaine getChainePossedee() {
+        return chainePossedee;
+    }
+
+    public void setChainePossedee(Chaine chainePossedee) {
+        this.chainePossedee = chainePossedee;
+    }
+
+    public List<Chaine> getChaineAbonee() {
+        return  chaineAbonee;
+    }
+
+    public void setChaineAbonee(List<Chaine> chaineAbonee) {
+        this.chaineAbonee = chaineAbonee;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Like> getArrayLike() {
         return arrayLike;
     }
 
-    public void setArrayLike(Collection<Like> arrayLike) {
+    public void setArrayLike(List<Like> arrayLike) {
         this.arrayLike = arrayLike;
     }
 
-    public Collection<Video> getArrayVideo() {
+    public List<Video> getArrayVideo() {
         return arrayVideo;
     }
 
-    public void setArrayVideo(Collection<Video> arrayVideo) {
+    public void setArrayVideo(List<Video> arrayVideo) {
         this.arrayVideo = arrayVideo;
     }
 
@@ -50,5 +78,26 @@ public class Utilisateur {
 
     public void setDateNaissance(Date dateNaissance) {
         this.dateNaissance = dateNaissance;
+    }
+
+    public void addLike(Like like) {
+        this.arrayLike.add(like);
+    }
+
+    public void addVideo(Video video) {
+        this.arrayVideo.add(video);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Utilisateur that = (Utilisateur) o;
+        return pseudo.equals(that.pseudo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pseudo);
     }
 }
